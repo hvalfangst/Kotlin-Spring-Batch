@@ -1,0 +1,20 @@
+spring:
+  flyway:
+    locations: filesystem:./migrations/source, filesystem:./migrations/target
+
+logging:
+  level:
+    org.flywaydb.core.internal.resource: DEBUG
+
+
+env:
+  sourceDatabase:
+    url: jdbc:postgresql://localhost:5433/source_db
+    username: clerk_kent
+    password: ihatemyjob
+    driver: org.postgresql.Driver
+  targetDatabase:
+    url: jdbc:postgresql://localhost:5434/target_db
+    username: MAGALUFS
+    password: moneymoneymoneey
+    driver: org.postgresql.Driver

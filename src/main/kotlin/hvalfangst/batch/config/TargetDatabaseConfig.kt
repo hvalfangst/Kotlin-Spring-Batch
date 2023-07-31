@@ -1,7 +1,7 @@
 package hvalfangst.batch.config
 
-import org.flywaydb.core.Flyway
 import org.jetbrains.exposed.sql.Database
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.jdbc.datasource.DriverManagerDataSource
@@ -16,16 +16,9 @@ class TargetDatabaseConfig(env: EnvironmentConfiguration) {
             user = env.targetDatabase.username,
             password = env.targetDatabase.password
         )
-
-        val flyway = Flyway
-            .configure()
-            .dataSource(env.targetDatabase.url, env.targetDatabase.username, env.targetDatabase.password)
-            .locations("classpath:db/migration/target")
-            .load()
-
-        flyway.migrate()
     }
 
+    @Qualifier("targetDatabase")
     @Bean(name = ["targetDatabase"])
     fun targetDatabase(env: EnvironmentConfiguration): DataSource {
         return DriverManagerDataSource().apply {
