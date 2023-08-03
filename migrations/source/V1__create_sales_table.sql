@@ -1,4 +1,4 @@
--- db/migration/source/V1__create_sales_table.sql
+-- tables/migration/source/V1__create_sales_table.sql
 
 CREATE TABLE sales (
                        id SERIAL PRIMARY KEY,

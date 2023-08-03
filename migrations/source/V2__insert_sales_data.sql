@@ -1,4 +1,4 @@
--- db/migration/source/V2__insert_sales_data.sql
+-- tables/migration/source/V2__insert_sales_data.sql
 
 INSERT INTO sales (product, quantity, price, date) VALUES
                                                        ('Laptop', 5, 900.0, '2023-07-01'),

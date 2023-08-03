@@ -1,6 +1,6 @@
 spring:
   flyway:
-    locations: filesystem:./migrations/source, filesystem:./migrations/target
+    enabled: false
 
 logging:
   level:
@@ -13,8 +13,10 @@ env:
     username: clerk_kent
     password: ihatemyjob
     driver: org.postgresql.Driver
+    migrationPath: "filesystem:./migrations/source"
   targetDatabase:
     url: jdbc:postgresql://localhost:5434/target_db
     username: MAGALUFS
     password: moneymoneymoneey
     driver: org.postgresql.Driver
+    migrationPath: "filesystem:./migrations/target"
