@@ -55,7 +55,6 @@ class SalesRepository @Autowired constructor(@Qualifier("sourceDatabase") privat
     /**
      * Converts a ResultRow to a SalesRecord object.
      *
-     * @param resultRow The ResultRow to be converted.
      * @return A SalesRecord object representing the data in the ResultRow.
      */
     private fun ResultRow.toSalesRecord(): SalesRecord {

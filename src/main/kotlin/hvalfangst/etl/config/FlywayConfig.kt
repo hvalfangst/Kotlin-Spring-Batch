@@ -44,20 +44,20 @@ class FlywayConfig {
      */
     @PostConstruct
     fun migrateFlyway() {
-        log.info("[MIGRATION START] - - - SOURCE DATABASE - - - [MIGRATION START]")
+        log.info("Starting migration: [SOURCE DATABASE]")
         var configuration = ClassicConfiguration()
         configuration.dataSource = sourceDatabase
         configuration.setLocations(Location(migrationPathSource))
         var flyway = Flyway(configuration)
         flyway.migrate()
-        log.info("[MIGRATION END] - - - SOURCE DATABASE - - - [MIGRATION END]")
+        log.info("Finished migration: [SOURCE DATABASE]")
 
-        log.info("[MIGRATION START] - - - TARGET DATABASE - - - [MIGRATION START]")
+        log.info("Starting migration: [TARGET DATABASE]")
         configuration = ClassicConfiguration()
         configuration.dataSource = targetDatabase
         configuration.setLocations(Location(migrationPathTarget))
         flyway = Flyway(configuration)
         flyway.migrate()
-        log.info("[MIGRATION END] - - - TARGET DATABASE - - - [MIGRATION END]")
+        log.info("Finished migration: [TARGET DATABASE]")
     }
 }

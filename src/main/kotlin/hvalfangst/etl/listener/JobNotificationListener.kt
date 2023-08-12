@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component
 @Component
 class JobNotificationListener : JobExecutionListener {
 
-    private val log: Logger = LoggerFactory.getLogger(this::class.java)
+    companion object {
+        private val log: Logger = LoggerFactory.getLogger(this::class.java)
+    }
 
     /**
      * Invoked before the job is executed.
@@ -23,7 +25,7 @@ class JobNotificationListener : JobExecutionListener {
      * @param jobExecution The JobExecution object representing the current job execution.
      */
     override fun beforeJob(jobExecution: JobExecution) {
-        log.info("Starting ETL job with id [${jobExecution.id}]")
+        log.info("Starting ETL job with id [${jobExecution.jobId}]")
     }
 
     /**
@@ -32,6 +34,6 @@ class JobNotificationListener : JobExecutionListener {
      * @param jobExecution The JobExecution object representing the current job execution.
      */
     override fun afterJob(jobExecution: JobExecution) {
-        log.info("Batch job with id [${jobExecution.id}] finished with status [${jobExecution.status}]")
+        log.info("Batch job with id [${jobExecution.jobId}] finished with status [${jobExecution.status}]")
     }
 }

@@ -28,7 +28,10 @@ class SalesService(private val salesRepository: SalesRepository) {
      * @param targetDate The date for which the sales records should be retrieved.
      * @return A list of sales records for the specified date.
      */
-    fun getSalesForDate(targetDate: LocalDate): List<SalesRecord> {
-        return salesRepository.getSalesForDate(targetDate)
+    fun getSalesForDate(targetDate: LocalDate?): List<SalesRecord> {
+        when(targetDate) {
+            null -> throw java.lang.NullPointerException("Variable 'targetDate' is null")
+            else ->  return salesRepository.getSalesForDate(targetDate)
+        }
     }
 }
