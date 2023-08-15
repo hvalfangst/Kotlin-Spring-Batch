@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 import javax.sql.DataSource
 
 /**
@@ -22,6 +23,8 @@ import javax.sql.DataSource
  * @property migrationPathSource The migration path for the source database specified through properties.
  * @property migrationPathTarget The migration path for the target database specified through properties.
  */
+
+@Profile("!test")
 @Configuration
 class FlywayConfig {
 
